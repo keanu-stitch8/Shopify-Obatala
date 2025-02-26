@@ -1,0 +1,8 @@
+<form action="{{ routes.search_url }}" method="get" class="flex-auto">
+  <div class="relative">
+    <input type="search" name="q" placeholder="{{ 'templates.search.search_for_label' | t }}" class="w-80 h-12 border border-gray-300 bg-white rounded-sm text-base pl-4 pr-12 py-2">
+    <button type="submit" class="absolute right-0 top-0 flex items-center justify-center w-12 h-12 cursor-pointer">
+      {% render 'icon-search', svg_class: "shrink size-4" %}
+    </button>
+  </div>
+</form>
