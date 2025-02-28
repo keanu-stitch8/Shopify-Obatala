@@ -14,6 +14,7 @@
     --color-gray-200: oklch(0.928 0.006 264.531);
     --color-gray-300: oklch(0.872 0.01 258.338);
     --color-gray-400: oklch(0.707 0.022 261.325);
+    --color-gray-700: oklch(0.373 0.034 259.733);
     --color-gray-900: oklch(0.21 0.034 264.665);
     --color-black: #000;
     --color-white: #fff;
@@ -1616,6 +1617,9 @@
   }
   .text-gray-400 {
     color: var(--color-gray-400);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
   }
   .text-gray-900 {
     color: var(--color-gray-900);
