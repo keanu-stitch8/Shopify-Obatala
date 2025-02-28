@@ -5,7 +5,8 @@
     <div class="flex flex-1">
       <a href="{{ shop.secure_url }}"><img src="{{ 'logo_obatala.svg' | asset_url }}" width="243" height="46" alt="{{ shop.name }}" /></a>
     </div>
-    <div>{% render 'header-search' %}</div>
+    {% comment %} <div>{% render 'header-search' %}</div> {% endcomment %}
+     <div>{% render 'main-search' %}</div>
     <div class="flex flex-1 items-center justify-end">
       {% if shop.customer_accounts_enabled %}
         {% if customer %}

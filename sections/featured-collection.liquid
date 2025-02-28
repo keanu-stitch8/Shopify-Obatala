@@ -1,0 +1,61 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-center leading-16 sm:text-2xl lg:text-5xl">{{ section.settings.title }}</h1>
+    </div>
+
+    {% case section.settings.number_columns_to_show %}
+      {% when 2 %}
+        {% assign cols_to_show = 'lg:grid-cols-2' %}
+      {% when 3 %}
+        {% assign cols_to_show = 'lg:grid-cols-3' %}
+      {% when 4 %}
+        {% assign cols_to_show = 'lg:grid-cols-4' %}
+      {% when 5 %}
+        {% assign cols_to_show = 'lg:grid-cols-5' %}
+      {% else %}
+        
+    {% endcase %}
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 {{ cols_to_show }} xl:gap-x-8">
+      {% for product in section.settings.featured_collection.products limit: section.settings.number_columns_to_show %}
+        {% render 'product-card', product_card: product %}
+        {% else %}
+          {% for item in (1..5) %}
+            {% render 'product-card-placeholder' %}
+          {% endfor %}
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Featured Collection",
+        "label": "title"
+      },
+      {
+        "type":  "collection",
+        "id": "featured_collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "number_columns_to_show",
+        "min": 2,
+        "max": 5,
+        "label": "Number columns to show",
+        "default": 5
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Collection"
+      }
+    ]
+  }
+{% endschema %}

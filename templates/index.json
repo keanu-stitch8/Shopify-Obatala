@@ -4,10 +4,16 @@
       "type": "image-banner",
       "settings": {}
     },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "featured_collection": "all"
+      }
+    },
     "homepage": {
       "type": "homepage",
       "settings": {}
     }
   },
-  "order": ["image-banner", "homepage"]
+  "order": ["image-banner", "featured-collection", "homepage"]
 }
