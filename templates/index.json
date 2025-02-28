@@ -24,7 +24,11 @@
     "homepage-seo-text": {
       "type": "homepage-seo-text",
       "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
     }
   },
-  "order": ["image-banner", "featured-collection", "homepage-seo-text"]
+  "order": ["image-banner", "featured-collection", "homepage-seo-text","footer"]
 }
