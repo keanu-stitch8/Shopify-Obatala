@@ -1,7 +1,7 @@
-<div class="bg-white">
+<div class="bg-white mb-4 lg:mb-8">
   <div class="max-w-8xl mx-auto px-4 lg:px-8">
-    <h2 class="font-bold text-2xl text-center mb-4 lg:text-3xl">{{ section.settings.homepage_seo_text_title }}</h2>
-    <div class="text-center space-y-6">{{ section.settings.homepage_seo_text_text }}</div>
+    <h2 class="font-semibold text-2xl text-center mb-4 lg:text-3xl">{{ section.settings.title }}</h2>
+    <div class="text-base text-center space-y-6">{{ section.settings.text }}</div>
   </div>
 </div>
 
@@ -11,15 +11,15 @@
     "settings": [
       {
         "type": "text",
-        "id": "homepage_seo_text_title",
+        "id": "title",
         "label": "Input title",
         "default": "Title"
       },
       {
         "type": "richtext",
-        "id": "homepage_seo_text_text",
+        "id": "text",
         "label": "Input text",
-        "default": "<p>Text</p>"
+        "default": "<p>Text here</p>"
       }
     ]
   }

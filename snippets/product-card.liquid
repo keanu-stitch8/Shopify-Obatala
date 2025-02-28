@@ -1,29 +1,42 @@
-<div class="group flex flex-col relative">
+<div class="flex flex-col relative">
   {% if product_card.featured_image %}
-    <div class="overflow-hidden relative aspect-square">
-      {{ product_card.featured_image | image_url: width: 200 | image_tag: class: "absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out group-hover:opacity-75" }}
-  </div>
+    <div class="relative aspect-square">
+      <a href="{{ product_card.url }}" class="group block">
+        {{ product_card.featured_image | image_url: width: 200 | image_tag: class: "absolute top-0 left-0 w-full h-full object-contain group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out group-hover:opacity-75" }}
+      </a>
+    </div>
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: "aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75" }}
   {% endif %}
   <div class="mt-4 flex flex-1 flex-col">
     <strong class="block font-semibold text-base text-gray-900 mb-2">
-      <a href="{{ product_card.url }}">
-        <span aria-hidden="true" class="absolute inset-0"></span>
+      <a href="{{ product_card.url }}" class="block">
+        {% comment %} <span aria-hidden="true" class="absolute inset-0"></span> {% endcomment %}
         {{ product_card.title }}
       </a>
     </strong>
-    <div class="mt-auto">
-      {% if product_card.compare_at_price %}
-        <p class="text-sm text-gray-400 line-through">{{ product_card.compare_at_price | money }}</p>
-      {% endif %}
-      
-      <p class="text-sm font-medium text-gray-900 mt-auto">{{ product_card.price | money }}</p>
-      {% if product_card.available %}
-        <p class="inline-flex items-center mt-1 text-sm text-green-600 gap-x-1">{% render 'icon-success', svg_class: "shrink-0 size-6 fill-green-400 text-white" %}In stock</p>
-        {% else %}
-          <p class="inline-flex items-center mt-1 text-sm text-red-600 gap-x-1">{% render 'icon-failed', svg_class: "shrink-0 size-6 fill-red-400 text-white" %}Not in stock</p>
-      {% endif %}
+    <div class="flex justify-between mt-auto">
+      <div>
+        <div class="flex">
+          {% if product_card.compare_at_price %}
+            <p class="text-sm text-gray-400 line-through">{{ product_card.compare_at_price | money }}</p>
+          {% endif %}
+          <p class="text-sm font-medium text-gray-900 mt-auto">{{ product_card.price | money }}</p>
+        </div>
+        <div>
+          {% if product_card.available %}
+            <p class="inline-flex items-center mt-1 text-sm text-green-600 gap-x-1">{% render 'icon-success', svg_class: "shrink-0 size-3.5 fill-green-400 text-white" %}In stock</p>
+            {% else %}
+              <p class="inline-flex items-center mt-1 text-sm text-red-600 gap-x-1">{% render 'icon-failed', svg_class: "shrink-0 size-3.5 fill-red-400 text-white" %}Not in stock</p>
+          {% endif %}
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-base font-medium rounded-lg border-0 bg-success-text text-white cursor-pointer inset-shadow-sm transition-colors duration-300 ease-in-out hover:bg-success-title focus:outline-none focus:bg-success-title disabled:opacity-50 disabled:pointer-events-none">
+          {% render 'icon-cart', svg_class: "shrink-0 size-5 fill-white" %}
+        </button>
+      </div>
     </div>
+
   </div>
 </div>

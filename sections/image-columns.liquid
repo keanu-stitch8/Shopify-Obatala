@@ -1,0 +1,25 @@
+<div class="bg-white mb-4 lg:mb-8">
+  <div class="max-w-8xl mx-auto px-4 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+      <div class="overflow-hidden relative aspect-16/9">
+        <img src="{{ 'homepage-body-block-1.jpeg' | asset_url }}" width="640" height="" alt="" class="absolute top-0 left-0 w-full h-full object-cover" />
+      </div>
+      <div class="overflow-hidden relative aspect-16/9">
+        <img src="{{ 'homepage-body-block-2.jpeg' | asset_url }}" width="640" height="" alt="" class="absolute top-0 left-0 w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image Columns",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Pick image"
+      }
+    ]
+  }
+{% endschema %}

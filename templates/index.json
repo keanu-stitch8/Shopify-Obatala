@@ -21,6 +21,10 @@
         "number_columns_to_show": 5
       }
     },
+    "image-columns": {
+      "type": "image-columns",
+      "settings": {}
+    },
     "homepage-seo-text": {
       "type": "homepage-seo-text",
       "settings": {}
@@ -30,5 +34,5 @@
       "settings": {}
     }
   },
-  "order": ["image-banner", "featured-collection", "homepage-seo-text","footer"]
+  "order": ["image-banner", "featured-collection", "image-columns", "homepage-seo-text", "footer"]
 }
