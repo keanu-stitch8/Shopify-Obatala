@@ -23,12 +23,20 @@
     },
     "homepage-seo-text": {
       "type": "homepage-seo-text",
-      "settings": {}
+      "settings": {
+        "homepage_seo_text_title": "Bij Obatala Coffee vind je al jouw koffie en keukenapparatuur",
+        "homepage_seo_text_text": "<p>Obatala Coffee onderscheidt zich door de kennis van haar producten en is op de hoogte van de laatste trends in de koffiewereld.<br/>Doordat wij onze koffiebonen zelf selecteren en importeren kunnen we ook het eerlijke verhaal van onze koffie vertellen en verantwoorden.<br/>Alle koffies uit onze selectie zijn Ecologisch en Fair Trade gekeurd.<br/>Daardoor ben je verzekerd dat je niet alleen de boer, maar ook de natuur een eerlijke vergoeding betaald voor heerlijke koffie.<br/>In Amsterdam branden we de Arabica koffiebonen in kleine batches. Dit doen we zodat we altijd een vers aanbod hebben.</p><p>Obatala Coffee zorgt ervoor dat jij de juiste apparaten in huis hebt voor de lekkerste koffie.<br/>Of het nu liever een espresso drinkt, of slow coffee uit een V60, wij hebben het juiste koffiezetapparaat.<br/>Alles vindt je hier terug in de webshop. En als je hulp nodig hebt, dan staan we voor je klaar.</p>"
+      }
     },
     "footer": {
       "type": "footer",
       "settings": {}
     }
   },
-  "order": ["image-banner", "featured-collection", "homepage-seo-text","footer"]
+  "order": [
+    "image-banner",
+    "featured-collection",
+    "homepage-seo-text",
+    "footer"
+  ]
 }
