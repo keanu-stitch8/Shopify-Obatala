@@ -10,10 +10,10 @@
         "featured_collection": "all"
       }
     },
-    "homepage": {
-      "type": "homepage",
+    "homepage-seo-text": {
+      "type": "homepage-seo-text",
       "settings": {}
     }
   },
-  "order": ["image-banner", "featured-collection", "homepage"]
+  "order": ["image-banner", "featured-collection", "homepage-seo-text"]
 }

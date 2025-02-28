@@ -1,0 +1,26 @@
+<div class="bg-white">
+  <div class="max-w-8xl mx-auto px-4 lg:px-8">
+    <h2>{{ section.settings.homepage_seo_text_title }}</h2>
+    {{ section.settings.homepage_seo_text_text }}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "SEO Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "homepage_seo_text_title",
+        "label": "Input title",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "homepage_seo_text_text",
+        "label": "Input text",
+        "default": "Text"
+      }
+    ]
+  }
+{% endschema %}
