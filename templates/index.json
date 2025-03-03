@@ -37,14 +37,5 @@
       "settings": {}
     }
   },
-<<<<<<< HEAD
   "order": ["image-banner", "featured-collection", "image-columns", "homepage-seo-text", "footer"]
-=======
-  "order": [
-    "image-banner",
-    "featured-collection",
-    "homepage-seo-text",
-    "footer"
-  ]
->>>>>>> 8e3d23acd5573d166b1f003e7e3646ea10a6b800
 }
