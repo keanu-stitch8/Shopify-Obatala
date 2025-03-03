@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "usp-bar": {
+      "type": "usp-bar",
+      "settings": {}
+    },
     "image-banner": {
       "type": "image-banner",
       "settings": {}
@@ -37,5 +41,5 @@
       "settings": {}
     }
   },
-  "order": ["image-banner", "featured-collection", "image-columns", "homepage-seo-text", "footer"]
+  "order": ["usp-bar","image-banner", "featured-collection", "image-columns", "homepage-seo-text", "footer"]
 }

@@ -1,13 +1,13 @@
 {% comment %} {% assign main_menu_linklists = linklists[section.settings.menu].links %} {% endcomment %}
 
 <div class="bg-white w-full border-b-1 border-b-gray-300">
-  <div class="max-w-8xl flex mx-auto gap-x-4 px-4 py-4 lg:px-8">
+  <div class="max-w-8xl flex items-center mx-auto gap-x-4 px-4 py-4 lg:px-8">
     <div class="flex flex-1">
       <a href="{{ shop.secure_url }}"><img src="{{ 'logo_obatala.svg' | asset_url }}" width="243" height="46" alt="{{ shop.name }}" /></a>
     </div>
     {% comment %} <div>{% render 'header-search' %}</div> {% endcomment %}
-     <div>{% render 'main-search' %}</div>
-    <div class="flex flex-1 items-center justify-end">
+    <div>{% render 'main-search' %}</div>
+    <div class="flex flex-1 justify-end">
       {% if shop.customer_accounts_enabled %}
         {% if customer %}
           {% else %}
@@ -19,12 +19,12 @@
   </div>
 </div>
 <div class="bg-white w-full border-b-1 border-b-gray-300">
-  <div class="max-w-8xl flex mx-auto gap-x-4 px-4 py-4 lg:px-8">
+  <div class="max-w-8xl flex mx-auto gap-x-4 px-4 py-3 lg:px-8">
     <nav class="hidden md:block md:w-full">
       <ul class="flex justify-between gap-x-6">
         {% for link in linklists.main-menu.links %}
           <li class="relative group">
-            <a href="{{ link.url }}" class="inline-flex items-center font-semibold text-base text-gray-900 cursor-pointer hover:text-accent">
+            <a href="{{ link.url }}" class="inline-flex items-center font-bold text-base text-gray-900 cursor-pointer lg:text-[15px] hover:text-accent">
               {{ link.title }}
               {% if link.links != blank %}{% render 'icon-chevron-down', svg_class: "shrink-0 size-4 ml-1" %}{% endif %}
             </a>
