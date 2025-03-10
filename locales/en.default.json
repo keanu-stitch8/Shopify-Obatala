@@ -527,5 +527,12 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "customerService": {
+    "order": "Order",
+    "pay": "Pay",
+    "delivery_collection": "Delivery and collection",
+    "returns_exchanges": "Returns and exchanges",
+    "warranty_repair": "Warranty and repair"
   }
 }

@@ -7,18 +7,18 @@
     </div>
     {% comment %} <div>{% render 'header-search' %}</div> {% endcomment %}
     <div>{% render 'main-search' %}</div>
-    <div class="flex flex-1 justify-end">
+    <div class="flex flex-1 justify-end gap-x-4">
       {% if shop.customer_accounts_enabled %}
         {% if customer %}
           {% else %}
-            <a href="{{ routes.account_login_url }}">{{ 'customer.log_in' | t }}</a>
+            <a href="{{ routes.account_login_url }}" class="flex items-center font-semibold text-sm">{% render 'icon-user', svg_class: "shrink-0 h-6 text-black mr-1" %}{{ 'customer.log_in' | t }}</a>
         {% endif %}
       {% endif %}
-      <a href="{{ routes.cart_url }}">{% render 'icon-cart', svg_class: "shrink-0 size-7 text-black" %}</a>
+      <a href="{{ routes.cart_url }}">{% render 'icon-cart', svg_class: "shrink-0 h-6 text-black" %}</a>
     </div>
   </div>
 </div>
-<div class="bg-white w-full border-b-1 border-b-gray-300">
+<div class="bg-white hidden w-full border-b-1 border-b-gray-300 lg:block">
   <div class="max-w-8xl flex mx-auto gap-x-4 px-4 py-3 lg:px-8">
     <nav class="hidden md:block md:w-full">
       <ul class="flex justify-between gap-x-6">

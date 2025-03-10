@@ -2,7 +2,32 @@
   <div class="bg-black">
     <div class="max-w-8xl mx-auto px-4 py-4 lg:px-8">
       <div class="grid grid-cols-4">
-        <div>test</div>
+        <div>
+          <strong class="block font-bold text-base mb-2"><a href="" class="text-white no-underline">Customer service</a></strong>
+          <ul>
+            <li><a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.order' | t }}</a></li>
+            <li><a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.pay' | t }}</a></li>
+            <li><a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.delivery_collection' | t }}</a></li>
+            <li><a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.returns_exchanges' | t }}</a></li>
+            <li><a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.warranty_repair' | t }}</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong class="block font-bold text-base text-white mb-2">Product</strong>
+          <ul class="">
+            {% for link in linklists.main-menu.links %}
+              <li class="relative group">
+                <a href="{{ link.url }}" class="text-sm text-white cursor-pointer hover:underline">
+                  {{ link.title }}
+                  {% if link.links != blank %}{% render 'icon-chevron-down', svg_class: "shrink-0 size-4 ml-1" %}{% endif %}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div>
+          <strong class="block font-bold text-base text-white mb-2">{{ 'blogs.article.blog' | t }}</strong>
+        </div>
       </div>
     </div>
   </div>
