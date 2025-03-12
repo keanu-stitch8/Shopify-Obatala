@@ -1,0 +1,56 @@
+{{ 'splide-core.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'splide.min.js' | asset_url }}" defer></script>
+
+<div class="bg-gray-100 border-b border-b-gray-200">
+  <div class="max-w-8xl mx-auto px-4 py-2 lg:px-8">
+    <div class="flex">
+      <div class="splide">
+        <div class="splide__track">
+          <div class="splide__list">
+            {% for block in section.blocks %}
+              <div class="splide__slide flex items-center">
+                 {{ section.settings.vendor_logo | image_url: width: 100 | image_tag }}
+              </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    var splide = new Splide( '#splide-vendor-logo .splide', {
+      autoplay: true,
+      height: 43,
+      perPage: 5,
+      permove: 1,
+      arrows: false,
+      pagination: false,
+    });
+    splide.mount();
+  } );
+</script>
+
+{% schema %}
+  {
+    "name": "Vendor Logo",
+    "tag": "section",
+    "max_blocks": 10,
+    "blocks": [
+      {
+        "name": "Slider",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "brand_image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
