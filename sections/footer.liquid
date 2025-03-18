@@ -5,11 +5,11 @@
     {% endfor %}
     </div>
   <div class="bg-black">
-    <div class="max-w-8xl mx-auto px-4 py-6 lg:px-8">
-      <div class="flex">
-        <div class="w-12 md:w-4/12 lg:w-2/12">
+    <div class="max-w-8xl mx-auto px-4 py-8 lg:px-8">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 xl:col-span-2">
           <strong class="block font-bold text-lg mb-2"><a href="" class="text-white no-underline">Customer service</a></strong>
-          <ul>
+          <ul class="space-y-1">
             <li class="relative pl-4">{% render 'icon-chevron-right-regular', svg_class: "position absolute top-2.25 left-0 shrink-0 size-2 fill-white" %}<a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.order' | t }}</a></li>
             <li class="relative pl-4">{% render 'icon-chevron-right-regular', svg_class: "position absolute top-2.25 left-0 shrink-0 size-2 fill-white" %}<a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.pay' | t }}</a></li>
             <li class="relative pl-4">{% render 'icon-chevron-right-regular', svg_class: "position absolute top-2.25 left-0 shrink-0 size-2 fill-white" %}<a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.delivery_collection' | t }}</a></li>
@@ -17,9 +17,9 @@
             <li class="relative pl-4">{% render 'icon-chevron-right-regular', svg_class: "position absolute top-2.25 left-0 shrink-0 size-2 fill-white" %}<a href="" class="text-sm text-white cursor-pointer hover:underline">{{ 'customerService.warranty_repair' | t }}</a></li>
           </ul>
         </div>
-        <div class="w-12 md:w-8/12 lg:w-4/12">
+        <div class="col-span-12 sm:col-span-7 md:col-span-7 xl:col-span-4">
           <strong class="block font-bold text-lg text-white mb-2">Product</strong>
-          <ul class="grid grid-cols-2">
+          <ul class="space-y-1 md:grid md:grid-cols-2">
             {% for link in linklists.main-menu.links %}
               <li class="relative group pl-4">
                 <a href="{{ link.url }}" class="text-sm text-white cursor-pointer hover:underline">
@@ -29,9 +29,9 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="w-1-12 md:w-4/12 lg:w-2/12 xl:w-3/12">
-          <strong class="block font-bold text-lg text-white mb-2">{{ 'blogs.article.blog' | t }}</strong>
-          <ul>
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 xl:col-span-3">
+          <strong class="block font-bold text-lg text-white mb-2"><a href="{{ routes.blog.url }}" class="hover:underline">{{ 'blogs.article.blog' | t }}</a></strong>
+          <ul class="space-y-1">
           {% for article in blogs.news.articles %}
             <li class="relative group pl-4">
               <a href="{{ article.url }}" class="text-sm text-white cursor-pointer hover:underline">
@@ -41,26 +41,46 @@
           {% endfor %}
         </ul>
         </div>
-        <div class="w-12 md:w-8/12 xl:w-3/12">
+        <div class="col-span-12 sm:col-span-7 md:col-span-7 xl:col-span-3">
           <strong class="block font-bold text-lg text-white mb-2">{{ 'newsletter.label' | t }}</strong>
           {% form 'customer' %}
-            <div class="email">
+            <div class="mb-4">
               <input 
                 type="email" 
                 name="contact[email]" 
                 placeholder="{{ 'newsletter.label' | t }}" 
-                class="w-full bg-white rounded-lg font-medium text-sm mb-4 px-4 py-2"
+                class="w-full h-11 bg-white rounded-md font-medium text-sm px-4 py-2"
               />
             </div>
-            <div class="submit">
+            <div>
               <input 
                 type="submit" 
                 value="{{ 'newsletter.button_label' | t }}" 
-                class="px-4 py-2 hidden justify-center items-center gap-x-2 text-sm font-medium rounded-lg border-0 bg-success-text text-white cursor-pointer inset-shadow-sm transition-colors duration-300 ease-in-out lg:inline-flex hover:bg-success-title focus:outline-none focus:bg-accent-dark disabled:opacity-50 disabled:pointer-events-none" 
+                class="inline-flex h-11 px-4 justify-center items-center gap-x-2 text-sm font-medium rounded-md border-0 bg-success-text text-white cursor-pointer inset-shadow-sm transition-colors duration-300 ease-in-out hover:bg-success-title focus:outline-none focus:bg-accent-dark disabled:opacity-50 disabled:pointer-events-none" 
               />
             </div>
           {% endform %}
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white">
+    <div class="max-w-8xl mx-auto px-4 py-6 lg:px-8">
+      <div class="flex flex-wrap align-center justify-center mb-4 gap-x-4 gap-y-4 md:gap-x-2 md:gap-y-0">
+        <img src="{{ 'logo_ideal.svg' | asset_url }}" width="34" height="30" alt="iDeal">
+        <img src="{{ 'logo_visa.svg' | asset_url }}" width="74" height="24" alt="Visa">
+        <img src="{{ 'logo_mastercard.svg' | asset_url }}" width="49" height="30" alt="Mastercard">
+        <img src="{{ 'logo_paypal.svg' | asset_url }}" width="122" height="30" alt="PayPal">
+        <img src="{{ 'logo_applepay.svg' | asset_url }}" width="70" height="30" alt="Apple Pay">
+      </div>
+      <div class="md:flex md:justify-center text-sm mb-2">
+        <span class="block text-center md:inline-flex md:text-left md:after:content-['|'] md:after:ml-2 md:after:mr-2">Copyright &copy 2011-{{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+        <span class="block text-center md:inline-flex md:text-left md:after:content-['|'] md:after:ml-2 md:after:mr-2">{% for policy in shop.policies %}{% if policy != blank %}<a href="{{ policy.url }}" class="hover:underline">{{ policy.title }}</a>{% endif %}{% endfor %}</span>
+        <span class="block text-center md:inline-flex md:text-left md:after:content-['|'] md:after:ml-2 md:after:mr-2">KvK: 27349892</span>
+        <span class="block text-center md:inline-flex md:text-left">BTW: NL821075664B01</span>
+      </div>
+      <div class="flex justify-center text-sm">
+        Review on Trustpilot: 4.7 / 5 - 27 reviews
       </div>
     </div>
   </div>

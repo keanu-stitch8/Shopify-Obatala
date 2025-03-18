@@ -39,11 +39,7 @@
     "vendor-logo": {
       "type": "vendor-logo",
       "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
     }
   },
-  "order": ["usp-bar","image-banner", "featured-collection", "image-columns", "homepage-seo-text", "vendor-logo", "footer"]
+  "order": ["usp-bar","image-banner", "featured-collection", "image-columns", "homepage-seo-text", "vendor-logo"]
 }

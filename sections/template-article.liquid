@@ -1,0 +1,242 @@
+<article class="max-w-320 px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="max-w-full">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'article_title' %}
+          <div class="gap-y-4">
+            <h1 class="text-4xl font-bold text-center leading-16 sm:text-2xl lg:text-5xl">{{ article.title }}</h1>
+          </div>
+        {% when 'article_author' %}
+          <div class="flex items-center justify-center">
+            <div class="max-w-7xl text-center">
+              {% if section.settings.enable_author == true %}
+                <span class="text-base">{{ article.author }}</span>
+              {% endif %}
+            </div>
+          </div>
+          
+        {% when 'article_published_date' %}
+          <div class="flex items-center justify-center">
+            <div class="max-w-7xl text-center">
+              {% if section.settings.enable_published_date == true %}
+                <small class="text-gray-400"><time datetime="{{ article.published_at | date: format: 'date' }}">{{ article.published_at | date: format: 'date' }}</time></small>
+              {% endif %}
+            </div>
+          </div>
+        {% when 'featured_image' %}
+          <div class="max-w-7xl bg-gray-100 rounded-xl mx-2 md:mx-auto overflow-hidden my-6">
+            {% if article.image != blank %}
+              {% comment %} <img class="w-full h-80 md:h-96 object-cover object-center" src="{{ article.image | image_url: width: 1920, height: 1080 }}" alt="{{ article.image.alt }}" /> {% endcomment %}
+              {{ article.image | image_url: width: 1920, height: 1080 | image_tag }}
+              {% else %}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
+            {% endif %}
+          </div>
+        {% when 'article_content' %}
+          <div class="space-y-4">
+            {{ article.content }}
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</article>
+
+<!-- Comment -->
+{% if blog.comments_enabled? %}
+  <div class="bg-gray-100">
+    <div class="max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div class="max-w-2xl">
+        <div id="commnents">
+          <div class="text-center">
+            <h2 class="text-2xl font-bold text-center md:text-4xl md:leading-tight">
+              Comments
+            </h2>
+          </div>
+          {% if article.comments_count > 0 %}
+            <p class="mt-4 md:text-lg text-gray-600 text-center">
+              See what people are saying
+            </p>
+            {% paginate article.comments by 5 %}
+              {% for comment in article.comments %}
+                <div class="mt-4 p-6 relative z-10 bg-white border border-gray-300 rounded-xl">
+                  <div class="text-base font-bold">{{ comment.author }}</div>
+                  <div class="text-xs text-gray-400">{{ comment.created_at | date: format: 'date' }}</div>
+                  <p class="text-sm">{{ comment.content | strip_html }}</p>
+                </div>
+              {% endfor %}
+
+              {% comment %} {% if paginate.pages > 1 %}
+                {{  paginate| default_pagination }}
+              {% endif %} {% endcomment %}
+
+              <div class="flex justify-center mt-5">
+                {% render 'pagination', pagination: paginate %}
+              </div>
+
+            {% endpaginate %}
+          {% else %}
+            <p class="mt-4 md:text-lg text-gray-600 text-center">
+              There are no comments in this article.
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="max-w-2xl">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-center md:text-4xl md:leading-tight">
+          Post a comment
+        </h2>
+      </div>
+      <div class="mt-5 p-4 relative z-10 bg-white border border-gray-300 rounded-xl sm:mt-10 md:p-10">
+        {% form 'new_comment', article %}
+            {% if form.errors %}
+              <div class="border p-5">
+                <div class="flex flex-row items-center w-full my-3">
+                  <div class="text-red-500">
+                    {% render 'icon-failed' %}
+                  </div>
+                  <div class="text-sm font-medium ml-3">
+                    Oh no your comment was not posted
+                  </div>
+                </div>
+                <ul class="px-4 mb-3 ml-7 list-decimal">
+                  {% for error in form.errors %}
+                    <li>
+                      <span>{{ form.errors.messages[error] }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% elsif form.posted_successfully? %}
+                <div class="flex flex-row items-center w-full my-3">
+                  <div class="text-green-500">
+                    {% render 'icon-success' %}
+                  </div>
+                  <div class="text-sm font-medium ml-3">
+                    Your comment posted successfully
+                  </div>
+                </div>
+            {% endif %}
+
+            <div class="mb-4 sm:mb-8">
+              <label for="comment_author" class="block mb-2 text-sm font-medium">Name</label>
+              <input 
+                type="text" 
+                name="comment[author]" 
+                id="comment_author" 
+                class="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500" 
+                placeholder="Jane Doe"
+                required
+              >
+            </div>
+
+            <div class="mb-4 sm:mb-8">
+              <label for="comment_author" class="block mb-2 text-sm font-medium">Email address</label>
+              <input 
+                type="text" 
+                name="comment[email]" 
+                id="comment_email" 
+                class="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500" 
+                placeholder="janedoe@janedoe.com"
+                required
+              >
+            </div>
+
+            <div class="mb-4 sm:mb-8">
+              <label for="comment_content" class="block mb-2 text-sm font-medium">Comment</label>
+              <textarea 
+                name="comment[body]" 
+                id="comment_content" 
+                rows="4"
+                class="py-3 px-4 w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500" 
+                placeholder="Write comment here"
+              >
+              </textarea>
+            </div>
+
+            <div class="mt-6 grid">
+              <button type="submit" class="inline-flex h-11 px-4 justify-center items-center gap-x-2 text-sm font-medium rounded-md border-0 bg-success-text text-white cursor-pointer inset-shadow-sm transition-colors duration-300 ease-in-out hover:bg-success-title focus:outline-none focus:bg-accent-dark disabled:opacity-50 disabled:pointer-events-none" >Submit</button>
+            </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ article.title | json }},
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    },
+    "articleBody": {{ article.content | strip_html | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      "image": [
+        {{ article.image | image_url: 649 | prepend: 'https:' | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: format: "default" | json }},
+    "dateCreated": {{ article.created_at | date: format: "default" | json }}
+  }
+</script>
+
+{% schema %}
+  {
+    "name": "Template Article",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_author",
+        "default": true,
+        "label": "Enable Author"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_published_date",
+        "default": true,
+        "label": "Enable Published Date"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article_title",
+        "name": "Title",
+        "limit": 1
+      },
+      {
+        "type": "article_author",
+        "name": "Author",
+        "limit": 1
+      },
+      {
+        "type": "article_published_date",
+        "name": "Published Date",
+        "limit": 1
+      },
+      {
+        "type": "featured_image",
+        "name": "Thumbnail",
+        "limit": 1
+      },
+      {
+        "type": "article_content",
+        "name": "Content",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}

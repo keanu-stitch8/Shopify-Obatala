@@ -1,0 +1,46 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-center leading-16 sm:text-2xl lg:text-5xl">{{ section.settings.title }}</h1>
+    </div>
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' %}
+          {% if collection.all_products_count > 0 %}
+            <div class="group flex flex-col relative">
+              <a href="{{ collection.url }}">
+                <div class="overflow-hidden">
+                  {% if collection.featured_image != blank %}
+                    {% assign collection_image = collection.featured_image %}
+                    {% else %}
+                      {% assign collection_image = collection.products.first %}
+                  {% endif %}
+                  {{ collection_image | image_url: width: 200 | image_tag: class: "aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out group-hover:opacity-75" }}
+                </div>
+                <div class="mt-4 flex flex-1 flex-col">
+                  <strong class="block text-base text-gray-700 text-center mb-2">
+                    {{ collection.title }}
+                  </strong>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Template List Collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Collection title",
+        "default": "Collection"
+      }
+    ]
+  }
+{% endschema %}

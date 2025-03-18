@@ -1,0 +1,35 @@
+<div class="bg-white">
+  <div class="max-w-8xl mx-auto px-4 py-4 lg:px-8 lg:py-8">
+    <div class="border-b border-b-gray-200 pb-4 mb-8">
+      <h1 class="text-xl font-bold lg:text-2xl">{{ collection.title }}</h1>
+    </div>
+    
+    {% paginate collection.products by section.settings.number_of_products_per_page %}
+      <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        {% for product in collection.products %}
+          {% render 'product-card', product_card: product %}
+        {% else %}
+          <p>There are no products inside of this collection</p>
+        {% endfor %}
+      </div>
+      <div class="flex justify-center mt-10">
+        {% render 'pagination', pagination: paginate %}
+      </div>
+    {% endpaginate %}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Template Collection",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "label": "Number of products per page",
+        "default": 8
+      }
+    ]
+  }
+{% endschema %}
