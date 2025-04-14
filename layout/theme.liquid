@@ -12,6 +12,7 @@
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'tailwindCSS.css' | asset_url | stylesheet_tag }}
     <script {{ 'application.js' | asset_url }} defer></script>
+    <script src="{{ 'alpinejs_3.14.8.min.js' | asset_url }}" defer></script>
   </head>
   <body>
     {% section 'header' %}
