@@ -1,8 +1,5 @@
-{{ 'splide-core.min.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'splide.min.js' | asset_url }}" defer></script>
-
 <div class="bg-gray-100 border-b border-b-gray-200">
-  <div class="max-w-8xl mx-auto px-4 py-2 lg:px-8">
+  <div class="max-w-8xl mx-auto px-4 py-2">
     <div class="hidden lg:flex lg:justify-between">
       <div class="flex items-center">
         {% render 'icon-truck-fast-duotone', svg_class: "shrink-0 max-w-10 h-7", svg_primary_class: "fill-accent opacity-100", svg_secondary_class: "fill-black" %}
@@ -34,7 +31,7 @@
       </div>
     </div>
     <div class="flex lg:hidden" aria-label="USP Bar">
-      <div class="splide">
+      <div id="splide-usp-bar" class="splide">
         <div class="splide__track">
           <div class="splide__list">
             <div class="splide__slide flex items-center">
@@ -74,7 +71,7 @@
 
 <script>
   document.addEventListener( 'DOMContentLoaded', function() {
-    var splide = new Splide( '#splide-usp-bar .splide', {
+    var headerUSPBar = new Splide( '#splide-usp-bar', {
       direction: 'ttb',
       autoplay: true,
       height: 43,
@@ -83,7 +80,8 @@
       arrows: false,
       pagination: false,
     });
-    splide.mount();
+
+    headerUSPBar.mount();
   } );
 </script>
 

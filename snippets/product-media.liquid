@@ -1,6 +1,6 @@
 {% case media.media_type %}
   {% when 'image' %}
-    {{ media | image_url: width: 640 | image_tag }}
+    {{ media | image_url: width: imageWidth | image_tag: class: imageClass }}
   {% when 'external_video' %}
     {{ media | external_video_tag: class: "w-full h-80 object-cover" }}
   {% when 'video' %}
